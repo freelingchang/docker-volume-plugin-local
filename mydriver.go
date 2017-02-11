@@ -167,7 +167,6 @@ func (g myDriver) Unmount(r volume.UnmountRequest) volume.Response {
 		log.Print(err.Error())
 		return volume.Response{Err: err.Error()}
 	}
-	//err := os.RemoveAll(p)
 	return volume.Response{}
 }
 
@@ -188,7 +187,6 @@ func (g myDriver) exist(name string) bool {
 
 func main() {
 	d := myDriver{root: *root}
-	//volume.NewHandler(d)
 	h := volume.NewHandler(d)
 	fmt.Printf("listening on %s\n", socketAddress)
 	fmt.Println(h.ServeUnix(socketAddress, 0))
